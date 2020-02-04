@@ -1,0 +1,23 @@
+* {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.question {
+    border: 1px solid grey;
+    padding: 2em;
+    width: 70%;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 1.5em;
+}
+
+form label {
+    font-size: 1em;
+}
