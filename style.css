@@ -2,11 +2,16 @@
     font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 
+body {
+    background-color: rgb(205, 248, 250);
+}
+
 .question {
     border: 1px solid grey;
     padding: 2em;
     width: 70%;
     margin: auto;
+    box-shadow: 1px 1px gray;
 }
 
 h1 {
@@ -39,4 +44,10 @@ form label {
     margin-top: 30vh;
     border: 1px solid gray;
     padding: 2em;
+}
+
+#close {
+    display: block;
+    float: right;
+    cursor: pointer;
 }
