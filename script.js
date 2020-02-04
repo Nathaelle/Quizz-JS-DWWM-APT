@@ -1,3 +1,4 @@
+"use strict";
 // Exemple d'utilisation de la méthode addEventListener()
 /*
 var titre = document.getElementsByTagName("h1");
@@ -23,25 +24,25 @@ for(let i = 0; i < max; i++) {
         // Pour stopper le comportement par défaut, et empêcher la page de se recharger
         event.preventDefault();
         
-        var elems = document.getElementsByName('question-' + (i + 1));
-        var max = elems.length;
+        let elems = document.getElementsByName('question-' + (i + 1));
+        let max = elems.length;
         count--;
 
         // Pour chaque élément "input type radio" :
-        for(let i = 0; i < max; i++) {
+        for(let j = 0; j < max; j++) {
             // Lorsque l'utilisateur a validé, les réponses ne peuvent plus être modifiées
             // Les boutons radio sont donc désactivés
-            elems[i].disabled = true;
+            elems[j].disabled = true;
 
-            if(elems[i].checked && elems[i].value == 'true') {
-                elems[i].parentElement.parentElement.style.color = "green";
-                elems[i].previousElementSibling.style.fontWeight = "bold";
-                elems[i].previousElementSibling.style.fontSize = "1.1em";
+            if(elems[j].checked && elems[j].value == 'true') {
+                document.getElementById('question-' + (i + 1)).style.color = "green";
+                elems[j].previousElementSibling.style.fontWeight = "bold";
+                elems[j].previousElementSibling.style.fontSize = "1.1em";
                 points++;
-            } else if (elems[i].checked && elems[i].value == 'false') {
-                elems[i].parentElement.parentElement.style.color = "red";
-                elems[i].previousElementSibling.style.fontWeight = "bold";
-                elems[i].previousElementSibling.style.fontSize = "1.1em";
+            } else if (elems[j].checked && elems[j].value == 'false') {
+                elems[j].parentElement.parentElement.style.color = "red";
+                elems[j].previousElementSibling.style.fontWeight = "bold";
+                elems[j].previousElementSibling.style.fontSize = "1.1em";
             }
         }
         checkEnd();
@@ -52,8 +53,8 @@ for(let i = 0; i < max; i++) {
 function checkEnd() {
 
     if(count === 0) {
-        var fin = document.getElementById("fin");
-        var info = document.getElementById("info");
+        let fin = document.getElementById("fin");
+        let info = document.getElementById("info");
         info.innerHTML = "<span id=\"close\">&#x2716;</span>Vous avez répondu à toutes les questions<br>Votre score est de " + points + "/" + max ;
         fin.style.display = "block";
         document.getElementById("close").addEventListener('click', function (e) {
@@ -64,7 +65,7 @@ function checkEnd() {
 
 // Questions structurées :
 
-question1 = {
+let question1 = {
     id: 1,
     intitule: "Un acouphène est une sensation qui affecte quel organe ?",
     reponses: [
@@ -75,7 +76,7 @@ question1 = {
     ]
 }
 
-question2 = {
+let question2 = {
     id: 2,
     intitule: "La mère de Lucie a trois enfants, ces deux premières filles se nomment Marie et Anna. Comment s'appelle son troisième enfant ?",
     reponses: [
@@ -86,7 +87,7 @@ question2 = {
     ]
 }
 
-question3 = {
+let question3 = {
     id: 3,
     intitule: "Combien y a t'il de lettres dans l'alphabet cyrillique ?",
     reponses: [
@@ -97,7 +98,7 @@ question3 = {
     ]
 }
 
-question4 = {
+let question4 = {
     id: 4,
     intitule: "Quelle est la monnaie du Brésil ?",
     reponses: [
