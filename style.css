@@ -21,3 +21,22 @@ p {
 form label {
     font-size: 1em;
 }
+
+#fin {
+    position: fixed;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 100vw;
+    height: 100vh;
+    display: none;
+}
+
+#fin p {
+    background-color: white;
+    width: 50vw;
+    height: 30vh;
+    margin: auto;
+    margin-top: 30vh;
+    border: 1px solid gray;
+    padding: 2em;
+}
