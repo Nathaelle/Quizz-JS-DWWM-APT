@@ -45,11 +45,11 @@ let question4 = {
 let lst_questions = [question1, question2, question3, question4];
 
 // 1. Accéder et afficher en console l'intitulé de la première question.
-console.log(lst_questions[0].intitule);
+/*console.log(lst_questions[0].intitule);
 
 // 2. Accéder et afficher en console tous les intitulé de toutes les questions.
 let max = lst_questions.length;
-for(var i = 0; i < max; i++){
+for(let i = 0; i < max; i++){
     console.log(lst_questions[i].intitule);
 }
 
@@ -80,4 +80,17 @@ for(let i = 0; i < max4; i++){
             console.log(lst_questions[i].reponses[u].label);
         }
     }
+}*/
+
+// 5. A partir de la récupération des intitulés de toutes les questions, construire une liste (ul) HTML et l'afficher en console.
+let max = lst_questions.length;
+let ul = "<ul>";
+for(let i = 0; i < max; i++){
+    ul = ul + "<li>" + lst_questions[i].intitule + "</li>";
 }
+ul = ul + "</ul>";
+console.log(ul);
+
+// 6. Insérer cette liste dans votre document HTML (en ayant auparavant prévu un élément d'accueil)
+let liste = document.getElementById("liste");
+liste.innerHTML = ul;
