@@ -45,10 +45,39 @@ let question4 = {
 let lst_questions = [question1, question2, question3, question4];
 
 // 1. Accéder et afficher en console l'intitulé de la première question.
-console.log('?');
+console.log(lst_questions[0].intitule);
 
 // 2. Accéder et afficher en console tous les intitulé de toutes les questions.
+let max = lst_questions.length;
+for(var i = 0; i < max; i++){
+    console.log(lst_questions[i].intitule);
+}
 
 // 3. Afficher en console, en dessous des intitulés, toutes les réponses de la question.
+let max2 = lst_questions.length;
+
+for(let i = 0; i < max2; i++){
+    // On parcours progressivement question1, question2, question3.... N
+    console.log(lst_questions[i].intitule);
+    //console.log(lst_questions[i].reponses); // lst_questions[i].reponses est un tableau
+
+    let max3 = lst_questions[i].reponses.length;
+    for(let u = 0; u < max3; u++) {
+        console.log(lst_questions[i].reponses[u].label);
+    }
+}
 
 // 4. Afficher en console, en plus des intitulés, toutes les BONNES réponses des questions.
+let max4 = lst_questions.length;
+
+for(let i = 0; i < max4; i++){
+    // On parcours progressivement question1, question2, question3.... N
+    console.log(lst_questions[i].intitule);
+    
+    let max5 = lst_questions[i].reponses.length;
+    for(let u = 0; u < max5; u++) {
+        if(lst_questions[i].reponses[u].value) {
+            console.log(lst_questions[i].reponses[u].label);
+        }
+    }
+}
