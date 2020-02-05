@@ -40,7 +40,7 @@ for(let i = 0; i < max; i++) {
                 elems[j].previousElementSibling.style.fontSize = "1.1em";
                 points++;
             } else if (elems[j].checked && elems[j].value == 'false') {
-                elems[j].parentElement.parentElement.style.color = "red";
+                document.getElementById('question-' + (i + 1)).style.color = "red";
                 elems[j].previousElementSibling.style.fontWeight = "bold";
                 elems[j].previousElementSibling.style.fontSize = "1.1em";
             }

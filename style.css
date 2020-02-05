@@ -10,7 +10,7 @@ body {
     border: 1px solid grey;
     padding: 2em;
     width: 70%;
-    margin: auto;
+    margin: 10px auto;
     box-shadow: 1px 1px gray;
 }
 
@@ -21,10 +21,30 @@ h1 {
 
 p {
     font-size: 1.5em;
+    width: 80%;
+}
+
+form {
+    display: flex;
+}
+
+.reponses {
+    width:80%;
 }
 
 form label {
     font-size: 1.2em;
+}
+
+form input[type=submit] {
+    display: block;
+    width: 20%;
+    font-size: 1.2em;
+    background-color: lightseagreen;
+    border: none;
+    padding: 0.8em;
+    border-radius: 10px;
+    color: white;
 }
 
 #fin {
