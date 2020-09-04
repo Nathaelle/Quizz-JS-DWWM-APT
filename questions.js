@@ -42,55 +42,96 @@ let question4 = {
     ]
 }
 
+// -----------------------------------------------------------------
+
 let lst_questions = [question1, question2, question3, question4];
 
 // 1. Accéder et afficher en console l'intitulé de la première question.
-/*console.log(lst_questions[0].intitule);
+//console.log(lst_questions[0].intitule);
 
 // 2. Accéder et afficher en console tous les intitulé de toutes les questions.
-let max = lst_questions.length;
-for(let i = 0; i < max; i++){
-    console.log(lst_questions[i].intitule);
-}
+// for(let question of lst_questions) {
+//     console.log(question.intitule);
+// }
+
+// let max = lst_questions.length;
+// for(let i = 0; i < max; i++) {
+//     console.log(lst_questions[i].intitule);
+// }
+
 
 // 3. Afficher en console, en dessous des intitulés, toutes les réponses de la question.
-let max2 = lst_questions.length;
+// for(let question of lst_questions) {
+//     console.log(question.intitule);
 
-for(let i = 0; i < max2; i++){
-    // On parcours progressivement question1, question2, question3.... N
-    console.log(lst_questions[i].intitule);
-    //console.log(lst_questions[i].reponses); // lst_questions[i].reponses est un tableau
+//     for(let reponse of question.reponses) {
+//         console.log(reponse.label);
+//     }
+// }
 
-    let max3 = lst_questions[i].reponses.length;
-    for(let u = 0; u < max3; u++) {
-        console.log(lst_questions[i].reponses[u].label);
-    }
-}
+// let max = lst_questions.length;
+// for(let i = 0; i < max; i++) {
+//     console.log(lst_questions[i].intitule);
+
+//     let max2 = lst_questions[i].reponses.length;
+//     for(let j = 0; j < max2; j++) {
+//         console.log(lst_questions[i].reponses[j].label);
+//     }
+// }
 
 // 4. Afficher en console, en plus des intitulés, toutes les BONNES réponses des questions.
-let max4 = lst_questions.length;
+// for(let question of lst_questions) {
+//     console.log(question.intitule);
 
-for(let i = 0; i < max4; i++){
-    // On parcours progressivement question1, question2, question3.... N
-    console.log(lst_questions[i].intitule);
-    
-    let max5 = lst_questions[i].reponses.length;
-    for(let u = 0; u < max5; u++) {
-        if(lst_questions[i].reponses[u].value) {
-            console.log(lst_questions[i].reponses[u].label);
-        }
-    }
-}*/
+//     for(let reponse of question.reponses) {
+//         if(reponse.value == true) {
+//             console.log(reponse.label);
+//         }
+//     }
+// }
+
+// let max = lst_questions.length;
+// for(let i = 0; i < max; i++) {
+//     console.log(lst_questions[i].intitule);
+
+//     let max2 = lst_questions[i].reponses.length;
+//     for(let j = 0; j < max2; j++) {
+//         if(lst_questions[i].reponses[j].value == true) {
+//             console.log(lst_questions[i].reponses[j].label);
+//         }
+//     }
+// }
 
 // 5. A partir de la récupération des intitulés de toutes les questions, construire une liste (ul) HTML et l'afficher en console.
-let max = lst_questions.length;
-let ul = "<ul>";
-for(let i = 0; i < max; i++){
-    ul = ul + "<li>" + lst_questions[i].intitule + "</li>";
-}
-ul = ul + "</ul>";
-console.log(ul);
+
+// let liste = "<ul>";
+// for(let question of lst_questions) {
+//     liste += "<li>" + question.intitule + "</li>";
+// }
+
+// liste += "</ul>";
+
+// console.log(liste);
 
 // 6. Insérer cette liste dans votre document HTML (en ayant auparavant prévu un élément d'accueil)
-let liste = document.getElementById("liste");
-liste.innerHTML = ul;
+
+// let elem = document.getElementById("liste");
+// elem.innerHTML = liste;
+
+// 7. Recréer, sur ce modèle, l'ensemble du html responsable de l'affichege des questions
+let liste = "";
+for(let question of lst_questions) {
+    liste += "<div class='question' id='question-"+ question.id + "'>";
+    liste += "<p>" + question.intitule + "</p>";
+    liste += "<form action='#' method='POST'><div class='reponses'>";
+
+    for(let reponse of question.reponses) {
+        liste += "<label for='quest" + question.id + "-rep" + reponse.id + "'>" + reponse.label + "</label>";
+        liste += "<input type='radio' name='question-" + question.id + "' value='" + reponse.value + "' id='quest" + question.id + "-rep" + reponse.id + "'>";
+    }
+
+    liste += "</div><input type='submit' value='Valider ma réponse'></form></div>";
+}
+
+let elem = document.getElementById("liste");
+elem.innerHTML = liste;
