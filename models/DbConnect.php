@@ -2,7 +2,7 @@
 
 abstract class DbConnect {
 
-    private $pdo;
+    protected $pdo;
 
     function __construct() {
         // On passe pour le moment sur la sécurisation des informations de connexion

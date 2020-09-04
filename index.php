@@ -20,7 +20,11 @@ switch($route) {
 
 function showHome() {
 
-    return ["template" => "views/home.php"];
+    $datas = [];
+    $question = new Question();
+    $datas['questions'] = $question->selectAll();
+
+    return ["template" => "views/home.php", $datas];
 }
 
 
