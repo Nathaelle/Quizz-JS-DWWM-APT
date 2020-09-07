@@ -1,7 +1,6 @@
 <?php
 
 $route = isset($_REQUEST['route'])? $_REQUEST['route'] : "home";
-$service = isset($_REQUEST['service'])? $_REQUEST['service'] : "default";
 
 spl_autoload_register(function ($class) {
     if(file_exists("models/$class.php")) {
@@ -14,13 +13,10 @@ spl_autoload_register(function ($class) {
 switch($route) {
     case "home" : $view = showHome();
     break;
-    default : $view = showHome();
-}
-
-switch($service) {
+    // Services -----
     case "questionnaire" : sendQuestions();
     break;
-    default : exit;
+    default : $view = showHome();
 }
 
 // Fonctions de controle
