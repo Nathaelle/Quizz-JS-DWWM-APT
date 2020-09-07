@@ -156,4 +156,8 @@ function getRequest() {
 }
 
 let request = getRequest();
+
+request.open("POST", "index.php?route=questionnaire");
+request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
 console.log(request);
