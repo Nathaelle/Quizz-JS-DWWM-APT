@@ -1,6 +1,7 @@
 <?php
 
 $route = isset($_REQUEST['route'])? $_REQUEST['route'] : "home";
+$service = isset($_REQUEST['service'])? $_REQUEST['service'] : "default";
 
 spl_autoload_register(function ($class) {
     if(file_exists("models/$class.php")) {
@@ -16,18 +17,39 @@ switch($route) {
     default : $view = showHome();
 }
 
+switch($service) {
+    case "questionnaire" : sendQuestions();
+    break;
+    default : exit;
+}
+
 // Fonctions de controle
 
 function showHome() {
 
     $datas = [];
     $question = new Question();
-    $datas['questions'] = $question->selectAll();
+
 
     return ["template" => "views/home.php", $datas];
 }
 
+function sendQuestions() {
 
+    $question = new Question();
+    $retour = $question->selectAll();
+    
+    foreach($retour as &$question) {
+        $reponse = new Reponse();
+        $reponse->setIdQuestion($question["id"]);
+        $question["reponses"] = $reponse->selectByIdQuestion();
+    }
+
+    $json = json_encode($retour);
+
+    echo $json;
+    exit;
+}
 
 // Template maître
 ?>

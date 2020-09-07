@@ -135,3 +135,25 @@ for(let question of lst_questions) {
 
 let elem = document.getElementById("liste");
 elem.innerHTML = liste;
+
+// ------------ CONNEXION -------------
+function getRequest() {
+    
+    //Récupère la connexion au serveur http
+    let request;
+    if (window.XMLHttpRequest) {
+    request = new XMLHttpRequest();
+    } else if (window.ActiveXObject) {
+        try {
+          request = new ActiveXObject("Msxml2.XMLHTTP"); // IE version > 5
+        } catch (e) {
+          request = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+    } else {
+        request = false;
+    }
+    return request;
+}
+
+let request = getRequest();
+console.log(request);

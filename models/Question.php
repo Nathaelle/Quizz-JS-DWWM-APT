@@ -20,4 +20,7 @@ class Question extends DbConnect {
         return $datas;
     }
 
+    function getId():int {
+        return $this->id;
+    }
 }
