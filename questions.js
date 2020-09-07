@@ -174,7 +174,7 @@ request.onreadystatechange = (function () {
 
             for(let reponse of question.reponses) {
                 liste += "<label for='quest" + question.id + "-rep" + reponse.id + "'>" + reponse.label + "</label>";
-                liste += "<input type='radio' name='question-" + question.id + "' value='" + reponse.value + "' id='quest" + question.id + "-rep" + reponse.id + "'>";
+                liste += "<input type='radio' name='question-" + question.id + "' value='" + reponse.id + "' id='quest" + question.id + "-rep" + reponse.id + "'>";
             }
 
             liste += "</div><input type='submit' value='Valider ma réponse'></form></div>";
@@ -182,9 +182,62 @@ request.onreadystatechange = (function () {
 
         let elem = document.getElementById("liste");
         elem.innerHTML = liste;
-
+        
+        initQuestions(datas);
     }
 });
 
+function initQuestions(datas) {
 
-console.log(request);
+    let questions = document.getElementsByClassName("question");
+    let points = 0;
+    let max = questions.length;
+    let count = max;
+
+    for(let i = 0; i < max; i++) {
+        
+        questions[i].lastElementChild.addEventListener("submit", function (event) {
+            // Pour stopper le comportement par défaut, et empêcher la page de se recharger
+            event.preventDefault();
+            
+            let elems = document.getElementsByName('question-' + (i + 1));
+            let verif = datas[i];
+            let max2 = elems.length;
+            count--;
+
+            // Pour chaque élément "input type radio" :
+            for(let j = 0; j < max2; j++) {
+                // Lorsque l'utilisateur a validé, les réponses ne peuvent plus être modifiées
+                // Les boutons radio sont donc désactivés
+                elems[j].disabled = true;
+
+                if(elems[j].checked && verif.reponses[j].value == 1) {
+                    console.log("OK");
+                    document.getElementById('question-' + (i + 1)).style.color = "green";
+                    elems[j].previousElementSibling.style.fontWeight = "bold";
+                    elems[j].previousElementSibling.style.fontSize = "1.1em";
+                    points++;
+                } else if (elems[j].checked) {
+                    document.getElementById('question-' + (i + 1)).style.color = "red";
+                    elems[j].previousElementSibling.style.fontWeight = "bold";
+                    elems[j].previousElementSibling.style.fontSize = "1.1em";
+                }
+            }
+            checkEnd(count, points, max);
+        });
+    }
+}
+
+function checkEnd(count, points, max) {
+
+    if(count === 0) {
+        let fin = document.getElementById("fin");
+        let info = document.getElementById("info");
+        info.innerHTML = "<span id=\"close\">&#x2716;</span>Vous avez répondu à toutes les questions<br>Votre score est de " + points + "/" + max ;
+        fin.style.display = "block";
+        document.getElementById("close").addEventListener('click', function (e) {
+            e.target.parentElement.parentElement.style.display = "none";
+        });
+    }
+}
+
