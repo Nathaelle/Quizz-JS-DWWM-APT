@@ -24,13 +24,12 @@ switch($route) {
 function showHome() {
 
     $datas = [];
-    $question = new Question();
-
-
     return ["template" => "views/home.php", $datas];
 }
 
 function sendQuestions() {
+
+    //sleep(3);
 
     $question = new Question();
     $retour = $question->selectAll();
