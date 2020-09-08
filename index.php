@@ -13,6 +13,8 @@ spl_autoload_register(function ($class) {
 switch($route) {
     case "home" : $view = showHome();
     break;
+    case "forms" : $view = showUserForms();
+    break;
     // Services -----
     case "questionnaire" : sendQuestions();
     break;
@@ -25,6 +27,18 @@ function showHome() {
 
     $datas = [];
     return ["template" => "views/home.php", $datas];
+}
+
+function showUserForms() {
+
+    $datas = [];
+    return ["template" => "views/user_forms.php", $datas];
+}
+
+function showAdmin() {
+
+    $datas = [];
+    return ["template" => "views/admin.php", $datas];
 }
 
 function sendQuestions() {
@@ -60,6 +74,6 @@ function sendQuestions() {
 
     <?php require($view['template']) ?>
 
-    <script src="questions.js"></script>
+    <script src="js/questions.js"></script>
 </body>
 </html>
